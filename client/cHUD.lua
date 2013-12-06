@@ -24,7 +24,7 @@ function HUD:Render()
 	if
 		isEnabled and
 		self:GetIsInAppropriateVehicle() and
-		Client:GetState() == GUIState.Game
+		Game:GetState() == GUIState.Game
 	then
 		self:DrawHUD()
 		-- self:GUpdate()
