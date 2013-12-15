@@ -8,7 +8,7 @@ M.Rot = function(vec , center , angle)
 	-- Copy vector.
 	vec = Vector2(vec.x , vec.y)
 	
-	vec3 = Vector(vec.x - center.x , 0 , vec.y - center.y)
+	vec3 = Vector3(vec.x - center.x , 0 , vec.y - center.y)
 	vec3 = Angle(angle , 0 , 0) * vec3
 	
 	vec.x = vec3.x + center.x
@@ -27,7 +27,7 @@ end
 
 M.DrawChar3D = function(char , color , pos , angle , scale)
 	
-	if not pos then pos = Vector(0,0,0) end
+	if not pos then pos = Vector3(0,0,0) end
 	if not scale then scale = 0.05 end
 	
 	local lines = characters3D[char]
@@ -40,9 +40,9 @@ M.DrawChar3D = function(char , color , pos , angle , scale)
 			-- Scale line.
 			line1 = line1 * scale
 			line2 = line2 * scale
-			-- Transform into Vector
-			line1 = Vector(line1.x , line1.y , 0)
-			line2 = Vector(line2.x , line2.y , 0)
+			-- Transform into Vector3
+			line1 = Vector3(line1.x , line1.y , 0)
+			line2 = Vector3(line2.x , line2.y , 0)
 			-- Rotate by angle.
 			if angle then
 				line1 = angle * line1
@@ -91,7 +91,7 @@ M.DrawText3D = function(text , color , pos , angle , scale , align)
 		M.DrawChar3D(
 			text:sub(i , i) ,
 			color ,
-			angle * Vector(n*scale*1.1 , 0 , 0) + pos,
+			angle * Vector3(n*scale*1.1 , 0 , 0) + pos,
 			angle ,
 			scale
 		)
@@ -109,9 +109,9 @@ M.DrawAngleGizmo = function(angle)
 		pos = LocalPlayer:GetPosition()
 	end
 	
-	GUIUtil.DrawLine3D(pos , pos + angle * Vector(1 , 0 , 0) * 3 , red*0.8)
-	GUIUtil.DrawLine3D(pos , pos + angle * Vector(0 , 1 , 0) * 3 , green*0.8)
-	GUIUtil.DrawLine3D(pos , pos + angle * Vector(0 , 0 , -1) * 3 , blue*0.8)
+	GUIUtil.DrawLine3D(pos , pos + angle * Vector3(1 , 0 , 0) * 3 , red*0.8)
+	GUIUtil.DrawLine3D(pos , pos + angle * Vector3(0 , 1 , 0) * 3 , green*0.8)
+	GUIUtil.DrawLine3D(pos , pos + angle * Vector3(0 , 0 , -1) * 3 , blue*0.8)
 	
 end
 

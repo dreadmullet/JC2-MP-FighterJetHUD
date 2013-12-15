@@ -20,9 +20,9 @@ function HUD:DrawLineHUD(pos1 , pos2 , noRoll)
 	pos2 = pos2 * settings.distanceHUD * settings.scaleHUD
 	
 	-- Create the 3D vectors.
-	local vec1 = Vector(pos1.x , pos1.y , -settings.distanceHUD)
+	local vec1 = Vector3(pos1.x , pos1.y , -settings.distanceHUD)
 	vec1 = angle * vec1
-	local vec2 = Vector(pos2.x , pos2.y , -settings.distanceHUD)
+	local vec2 = Vector3(pos2.x , pos2.y , -settings.distanceHUD)
 	vec2 = angle * vec2
 	
 	
@@ -65,12 +65,12 @@ function HUD:DrawTextHUD(text , pos , align , noRoll)
 	pos = pos * settings.distanceHUD * settings.scaleHUD
 	
 	-- Convert position to 3D vector.
-	pos = Vector(pos.x , pos.y , -settings.distanceHUD)
+	pos = Vector3(pos.x , pos.y , -settings.distanceHUD)
 	pos = angle * pos
 	pos = pos + position
 	
 	if noRoll then
-		angle = Angle.AngleAxis(roll , angle * Vector(0 , 0 , -1)) * angle
+		angle = Angle.AngleAxis(roll , angle * Vector3(0 , 0 , -1)) * angle
 	end
 	
 	GUIUtil.DrawText3D(
