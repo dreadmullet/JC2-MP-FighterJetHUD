@@ -22,7 +22,7 @@ function HUD:Render()
 	
 	-- Only draw if we're in a proper vehicle and not paused.
 	if
-		isEnabled and
+		self.isEnabled and
 		self:GetIsInAppropriateVehicle() and
 		Game:GetState() == GUIState.Game
 	then
@@ -35,8 +35,8 @@ end
 function HUD:PlayerChat(args)
 	
 	if args.text == settings.command then
-		isEnabled = not isEnabled
-		if isEnabled then
+		self.isEnabled = not self.isEnabled
+		if self.isEnabled then
 			Chat:Print(settings.name.." enabled" , settings.colorChat)
 		else
 			Chat:Print(settings.name.." disabled" , settings.colorChat)
