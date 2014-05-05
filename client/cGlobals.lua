@@ -27,7 +27,7 @@ function AddToHelp()
 	local args = {}
 	args.name = settings.name
 	args.text = settings.description
-	Events:FireRegisteredEvent("HelpAddItem" , args)
+	Events:Fire("HelpAddItem" , args)
 	
 end
 
@@ -36,7 +36,7 @@ function RemoveFromHelp()
 	-- Remove us from the help menu.
 	local args = {}
 	args.name = settings.name
-	Events:FireRegisteredEvent("HelpRemoveItem" , args)
+	Events:Fire("HelpRemoveItem" , args)
 	
 end
 
